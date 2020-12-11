@@ -1,4 +1,4 @@
-import os, platform, subprocess, dotbot
+import os, platform, subprocess, dotbot, sys
 
 class Brew(dotbot.Plugin):
     _brewDirective = "brew"
@@ -10,6 +10,9 @@ class Brew(dotbot.Plugin):
         return directive in (self._tapDirective, self._brewDirective, self._caskDirective, self._brewFileDirective)
 
     def handle(self, directive, data):
+        if sys.platform.startswith("darwin"):
+            self._log.info("Skipping action %s: not running on MacOS" % directive)
+            return True
         if directive == self._tapDirective:
             self._bootstrap_brew()
             return self._tap(data)
