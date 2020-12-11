@@ -10,7 +10,7 @@ as it doesn't handle updates and fails on unsupported operating systems.
 Just add it as submodule of your dotfiles repository.
 
 #+BEGIN_SRC shell
-git submodule add https://github.com/d12frosted/dotbot-brew.git
+git submodule add https://github.com/jarodtowner/dotbot-brew.git
 #+END_SRC
 
 Modify your =install= script, so it automatically enables =brew= plugin.
