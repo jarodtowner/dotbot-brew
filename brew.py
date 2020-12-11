@@ -10,7 +10,7 @@ class Brew(dotbot.Plugin):
         return directive in (self._tapDirective, self._brewDirective, self._caskDirective, self._brewFileDirective)
 
     def handle(self, directive, data):
-        if sys.platform.startswith("darwin"):
+        if not sys.platform.startswith("darwin"):
             self._log.info("Skipping action %s: not running on MacOS" % directive)
             return True
         if directive == self._tapDirective:
